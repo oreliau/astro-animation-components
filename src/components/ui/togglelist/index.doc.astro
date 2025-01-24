@@ -1,0 +1,18 @@
+---
+import InsertComponent from "@components/adapter-mdx/InsertComponentCode.astro";
+import Component from "./index.astro";
+const componentStringify = import.meta.glob("./index.astro", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+---
+
+<InsertComponent
+  componentStringify={(componentStringify as any)["./index.astro"].toString()}
+>
+  <Component>
+    <p slot="summary">Title</p>
+    <p slot="content">Content</p>
+  </Component>
+</InsertComponent>

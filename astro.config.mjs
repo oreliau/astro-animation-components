@@ -18,6 +18,9 @@ export default defineConfig({
           label: "Components",
           items: [
             { label: "Dialog", slug: "components/dialog" },
+            { label: "Datalist", slug: "components/datalist" },
+            { label: "Togglelist", slug: "components/togglelist" },
+            { label: "Scroll", slug: "components/scroll" },
             { label: "Switch", slug: "components/switch" },
             {
               label: "Checkbox",

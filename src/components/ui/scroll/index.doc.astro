@@ -1,0 +1,48 @@
+---
+import InsertComponent from "@components/adapter-mdx/InsertComponentCode.astro";
+import { generateLorem } from "@features/lorem";
+const componentStringify = `
+element {
+scroll-behavior: smooth;
+}
+`;
+---
+
+<InsertComponent componentStringify={componentStringify}>
+  <ul>
+    <li style="margin-top: 0;">
+      {generateLorem(1000)}
+    </li>
+    <li style="margin-top: 0;">{generateLorem(1000)}</li>
+  </ul>
+</InsertComponent>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: 0;
+    height: 300px;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+  }
+  li {
+    margin-top: 0;
+    padding: 10px;
+    flex-grow: 1;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    overflow: scroll;
+  }
+  li:hover {
+    background-color: #f1f1f1;
+  }
+  li:nth-child(1) {
+    scroll-behavior: unset;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    li:nth-child(2) {
+      scroll-behavior: smooth;
+    }
+  }
+</style>

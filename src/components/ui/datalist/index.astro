@@ -1,0 +1,12 @@
+---
+interface Props {
+  id: string;
+  options: string[];
+}
+const { id, options } = Astro.props;
+---
+
+<input list={id} />
+<datalist id={id}>
+  {options.map((option, index) => <option value={option} />)}
+</datalist>

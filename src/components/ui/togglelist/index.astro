@@ -1,0 +1,21 @@
+---
+interface Props {
+  open?: boolean;
+}
+const { open = false } = Astro.props;
+---
+
+<details open={open}>
+  <summary><slot name="summary" /></summary>
+  <slot name="content" />
+</details>
+
+<style>
+  details > summary::marker {
+    content: "▶";
+    font-size: 1.5rem;
+  }
+  details[open] > summary::marker {
+    content: "▼";
+  }
+</style>
