@@ -1,0 +1,7 @@
+---
+import Code from "@components/adapter-mdx/Code.astro";
+const { componentStringify } = Astro.props;
+---
+
+<slot />
+<Code>{componentStringify}</Code>

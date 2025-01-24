@@ -1,0 +1,94 @@
+---
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<dialog data-toggle={`toggle-dialogue-${id}`}>
+  <button
+    onclick={`const dialog = document.querySelector("dialog[data-toggle='toggle-dialogue-${id}']"); dialog.close();`}
+    autofocus>Close</button
+  >
+  <p>Here is the dialog</p>
+</dialog>
+<button
+  onclick={`const dialog = document.querySelector("dialog[data-toggle='toggle-dialogue-${id}']"); dialog.showModal();`}
+  data-toggle={`toggle-dialogue-${id}`}>Display dialog</button
+>
+
+<style>
+  dialog {
+    display: block;
+    inset: 0;
+    max-block-size: min(80vh, 100%);
+    overflow: hidden;
+    transition: opacity 0.5s;
+    animation: scaleDown 300ms forwards;
+    border-radius: 0.5rem;
+    padding: 0;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
+  }
+
+  dialog[open] {
+    animation: slideUp 300ms forwards;
+  }
+
+  dialog:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  dialog::backdrop {
+    backdrop-filter: blur(0.25rem);
+  }
+
+  dialog article {
+    padding: 0 2rem;
+  }
+
+  dialog header {
+    margin: 0;
+    background-color: #f3f3f3;
+    padding: 1rem 2rem;
+  }
+
+  dialog footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 2rem;
+  }
+
+  dialog header h3 {
+    margin: 0;
+  }
+
+  @keyframes slideUp {
+    0%,
+    50% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    0%,
+    50% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    60%,
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+</style>
